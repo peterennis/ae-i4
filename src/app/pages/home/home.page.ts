@@ -8,7 +8,7 @@ import { emojisplosion, emojisplosions } from 'emojisplosion';
 })
 export class HomePage implements OnInit {
 
-  cancel: any;
+  cancel?: () => void;
 
   constructor() { }
 
@@ -45,6 +45,7 @@ export class HomePage implements OnInit {
         document.getElementById('demo').innerHTML = '&nbsp;&nbsp;&nbsp;EXPLODING NOW !!!';
         // Commence explosions!
         const { cancel } = emojisplosions();
+        this.cancel = cancel;
       }
     }, 1000);
 
@@ -54,7 +55,13 @@ export class HomePage implements OnInit {
     console.log('ionViewDidLeave home page');
 
     // ...but stop after two seconds.
-    setTimeout(this.cancel, 2000);
+    setTimeout(
+      () => {
+        if (this.cancel) {
+          this.cancel();
+        }
+      },
+      2000);
   }
 
 }
