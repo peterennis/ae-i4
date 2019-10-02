@@ -54,7 +54,7 @@ export class HomePage implements OnInit {
     console.log('ionViewDidLeave home page');
 
     // ...but stop after two seconds.
-    setTimeout(this.cancel, 200);
+    setTimeout(this.cancel, 2000);
   }
 
 }
