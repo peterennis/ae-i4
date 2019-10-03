@@ -13,6 +13,12 @@ export class HomePage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('ngOnInit home page');
+  }
+
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter home page');
+
     // Just one explosion
     emojisplosion();
 
@@ -54,14 +60,14 @@ export class HomePage implements OnInit {
   ionViewDidLeave() {
     console.log('ionViewDidLeave home page');
 
-    // ...but stop after two seconds.
+    // ...but stop after half a second.
     setTimeout(
       () => {
         if (this.cancel) {
           this.cancel();
         }
       },
-      2000);
+      500);
   }
 
 }
